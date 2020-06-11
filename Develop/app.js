@@ -70,6 +70,7 @@ function askInfo() {
     const newEmployee = [...employees, answers];
     return again ?  moreEmployees(newEmployee) : newEmployee;
 };
+askInfo();
 
 
 
