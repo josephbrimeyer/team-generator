@@ -31,30 +31,43 @@ function makeManager() {
             message: "What is your id number?"
         },
         {
+            type: "list",
+            name: "role",
+            message: "Enter your role:",
+            choices: ["Manager",]
+        },
+        {
             type: "input",
-            name: "office-number",
+            name: "officeNumber",
             message: "What is your office number?"
         },
-    ])
-}
-function makeNewRole() {
-    inquirer.prompt([
         {
             type: "list",
             name: "position",
-            message: "What is your position?",
+            message: "Would you like to add another role?",
             choices: ['Engineer', 'Intern', 'Exit'],
-        },
-    ])
+        }
+    ]).then(function (data) {
+        let manager = new Manager(data.name, data.email, data.id, data.officeNumber);
+        employeeInformation.push(manager);
+    });
 }
-
-function askInfo() {
+function makeEngineer() {
     inquirer.prompt([
-        
         {
             type: "input",
-            name: "number",
-            message: "Enter your office number:",
+            name: "name",
+            message: "What is your first and last name?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your email address?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your id number?"
         },
         {
             type: "input",
@@ -62,25 +75,57 @@ function askInfo() {
             message: "Enter your GitHub user name:",
         },
         {
+            type: "list",
+            name: "position",
+            message: "Would you like to add another role?",
+            choices: ['Engineer', 'Intern', 'Exit'],
+        }
+    ]).then(function (data) {
+        let engineer = new Engineer(data.name, data.email, data.id, data.github);
+        employeeInformation.push(engineer);
+    });
+}
+
+function makeIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your first and last name?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your email address?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your id number?"
+        },
+        {
             type: "input",
             name: "school",
             message: "What is the name of the school you are attending?",
         },
         {
-            type: "confirm",
-            name: "askagain",
-            message: "Would you like to enter another team member?",
-            default: false
+            type: "list",
+            name: "position",
+            message: "Would you like to add another role?",
+            choices: ['Engineer', 'Intern', 'Exit'],
         }
-
     ]).then(function (data) {
-        const outputPath = path.join(OUTPUT_DIR, "team.html");
-        let teamHTML = outputPath(data);
-        console.log(teamHTML);
-        
-        return render
+        let intern = new Intern(data.name, data.email, data.id, data.school);
+        employeeInformation.push(intern);
     });
-};
+}
+// const outputPath = path.join(OUTPUT_DIR, "team.html");
+// let teamHTML = outputPath(data);
+// console.log(teamHTML);
+
+// return render
+//     });
+// };
 makeManager();
 
 
