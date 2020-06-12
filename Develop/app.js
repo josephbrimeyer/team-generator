@@ -6,8 +6,6 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
 
 
@@ -62,13 +60,16 @@ function askInfo() {
         }
 
     ]).then(function (data) {
+        const outputPath = path.join(OUTPUT_DIR, "team.html");
         let teamHTML = outputPath(data);
+        console.log(teamHTML);
+        
         return render
     });
 
-    const { again, ...answers } = async ()=> await inquirer.prompt(questions);
-    const newEmployee = [...employees, answers];
-    return again ?  moreEmployees(newEmployee) : newEmployee;
+    // const { again, ...answers } = async () => await inquirer.prompt(questions);
+    // const newEmployee = [...employees, answers];
+    // return again ? moreEmployees(newEmployee) : newEmployee;
 };
 askInfo();
 
