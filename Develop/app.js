@@ -5,13 +5,15 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+let employeeInformation = [];
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-function askInfo() {
+function makeManager() {
     inquirer.prompt([
         {
             type: "input",
@@ -29,28 +31,40 @@ function askInfo() {
             message: "What is your id number?"
         },
         {
+            type: "input",
+            name: "office-number",
+            message: "What is your office number?"
+        },
+    ])
+}
+function makeNewRole() {
+    inquirer.prompt([
+        {
             type: "list",
             name: "position",
             message: "What is your position?",
-            choices: ['Manager', 'Engineer', 'Intern'],
+            choices: ['Engineer', 'Intern', 'Exit'],
         },
+    ])
+}
+
+function askInfo() {
+    inquirer.prompt([
+        
         {
             type: "input",
             name: "number",
             message: "Enter your office number:",
-            when: (answers) => answers.role === 'Manager'
         },
         {
             type: "input",
             name: "github",
             message: "Enter your GitHub user name:",
-            when: (answers) => answers.role === 'Engineer'
         },
         {
             type: "input",
             name: "school",
             message: "What is the name of the school you are attending?",
-            when: (answers) => answers.role === 'Intern'
         },
         {
             type: "confirm",
@@ -66,12 +80,8 @@ function askInfo() {
         
         return render
     });
-
-    // const { again, ...answers } = async () => await inquirer.prompt(questions);
-    // const newEmployee = [...employees, answers];
-    // return again ? moreEmployees(newEmployee) : newEmployee;
 };
-askInfo();
+makeManager();
 
 
 
