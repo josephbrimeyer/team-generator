@@ -19,28 +19,28 @@ function makeManager() {
         {
             type: "input",
             name: "name",
-            message: "What is your first and last name?"
+            message: "Please create the Manager card first (required).\n  What is the Manager's first and last name?"
         },
         {
             type: "input",
             name: "email",
-            message: "What is your email address?"
+            message: "What is the Manager's email address?"
         },
         {
             type: "input",
             name: "id",
-            message: "What is your id number?"
+            message: "What is the Manager's id number?"
         },
         {
             type: "list",
             name: "role",
-            message: "Enter your role:",
-            choices: ["Manager",]
+            message: "Enter the role of this Employee:",
+            choices: ["Manager"]
         },
         {
             type: "input",
             name: "officeNumber",
-            message: "What is your office number?"
+            message: "What is the Manager's office number?"
         },
         {
             type: "list",
@@ -69,22 +69,22 @@ function makeEngineer() {
         {
             type: "input",
             name: "name",
-            message: "What is your first and last name?"
+            message: "What is the Engineer's first and last name?"
         },
         {
             type: "input",
             name: "email",
-            message: "What is your email address?"
+            message: "What is the Engineer's email address?"
         },
         {
             type: "input",
             name: "id",
-            message: "What is your id number?"
+            message: "What is the Engineer's id number?"
         },
         {
             type: "input",
             name: "github",
-            message: "Enter your GitHub user name:",
+            message: "Enter the Engineer's GitHub user name:",
         },
         {
             type: "list",
@@ -114,22 +114,22 @@ function makeIntern() {
         {
             type: "input",
             name: "name",
-            message: "What is your first and last name?"
+            message: "What is the Intern's first and last name?"
         },
         {
             type: "input",
             name: "email",
-            message: "What is your email address?"
+            message: "What is the Intern's email address?"
         },
         {
             type: "input",
             name: "id",
-            message: "What is your id number?"
+            message: "What is the Intern's id number?"
         },
         {
             type: "input",
             name: "school",
-            message: "What is the name of the school you are attending?",
+            message: "What is the name of the Intern's school?",
         },
         {
             type: "list",
