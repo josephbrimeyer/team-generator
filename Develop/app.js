@@ -8,6 +8,7 @@ const fs = require("fs");
 let employeeInformation = [];
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 
@@ -50,6 +51,17 @@ function makeManager() {
     ]).then(function (data) {
         let manager = new Manager(data.name, data.email, data.id, data.officeNumber);
         employeeInformation.push(manager);
+
+        switch (data.position) {
+            case "Engineer":
+                makeEngineer();
+                break;
+            case "Intern":
+                makeIntern();
+                break;
+            default:
+                createHtml();
+        }
     });
 }
 function makeEngineer() {
@@ -83,6 +95,17 @@ function makeEngineer() {
     ]).then(function (data) {
         let engineer = new Engineer(data.name, data.email, data.id, data.github);
         employeeInformation.push(engineer);
+
+        switch (data.position) {
+            case "Engineer":
+                makeEngineer();
+                break;
+            case "Intern":
+                makeIntern();
+                break;
+            default:
+                createHtml();
+        }
     });
 }
 
@@ -117,18 +140,24 @@ function makeIntern() {
     ]).then(function (data) {
         let intern = new Intern(data.name, data.email, data.id, data.school);
         employeeInformation.push(intern);
+
+        switch (data.position) {
+            case "Engineer":
+                makeEngineer();
+                break;
+            case "Intern":
+                makeIntern();
+                break;
+            default:
+                createHtml();
+        }
     });
 }
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
-// let teamHTML = outputPath(data);
-// console.log(teamHTML);
+function createHtml() {
+    fs.writeFileSync(outputPath, render(employeeInformation), "utf-8")
+}
 
-// return render
-//     });
-// };
 makeManager();
-
-
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
