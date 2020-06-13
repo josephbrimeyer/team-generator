@@ -19,7 +19,7 @@ function makeManager() {
         {
             type: "input",
             name: "name",
-            message: "Please create the Manager card first (required).\n  What is the Manager's first and last name?"
+            message: "Please create the Manager card first (required).\n  What is the Manager's name?"
         },
         {
             type: "input",
@@ -49,7 +49,7 @@ function makeManager() {
             choices: ['Engineer', 'Intern', 'Exit'],
         }
     ]).then(function (data) {
-        let manager = new Manager(data.name, data.email, data.id, data.officeNumber);
+        let manager = new Manager(data.name, data.id, data.email, data.officeNumber);
         employeeInformation.push(manager);
 
         switch (data.position) {
@@ -69,7 +69,7 @@ function makeEngineer() {
         {
             type: "input",
             name: "name",
-            message: "What is the Engineer's first and last name?"
+            message: "What is the Engineer's name?"
         },
         {
             type: "input",
@@ -93,7 +93,7 @@ function makeEngineer() {
             choices: ['Engineer', 'Intern', 'Exit'],
         }
     ]).then(function (data) {
-        let engineer = new Engineer(data.name, data.email, data.id, data.github);
+        let engineer = new Engineer(data.name, data.id, data.email, data.github);
         employeeInformation.push(engineer);
 
         switch (data.position) {
@@ -114,7 +114,7 @@ function makeIntern() {
         {
             type: "input",
             name: "name",
-            message: "What is the Intern's first and last name?"
+            message: "What is the Intern's name?"
         },
         {
             type: "input",
@@ -138,7 +138,7 @@ function makeIntern() {
             choices: ['Engineer', 'Intern', 'Exit'],
         }
     ]).then(function (data) {
-        let intern = new Intern(data.name, data.email, data.id, data.school);
+        let intern = new Intern(data.name, data.id, data.email, data.school);
         employeeInformation.push(intern);
 
         switch (data.position) {
