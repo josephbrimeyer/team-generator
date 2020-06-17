@@ -1,7 +1,21 @@
 .team-heading  {
-    background-color: 00005c;
+    background-color: #00005c;
+}
+
+h1 {
+    color: white;
 }
 
 .employee-card {
-    background-color: 6a097d;
+    background-color: #c060a1;
+}
+
+.card-body {
+    background-color: #c060a1;
+}
+.list-group-item {
+    background-color: #ffdcb4;
+}
+h2, h3 {
+    color: black;
 }
